@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<CONFIG>
+  <Compiler Value="G:\lazarus\fpc\2.6.0\bin\i386-win32\fpc.exe" Date="1095324404"/>
+  <Params Value=" -MObjFPC -Scghi -O1 -g -gl -vewnhi -l -FuG:\lazarus\packager\units\i386-win32 &quot;-FuC:\Users\Heiko Rothe\Documents\GitHub\MEMS\lib\&quot; &quot;-FUC:\Users\Heiko Rothe\Documents\GitHub\MEMS\lib\lib\i386-win32\&quot; laz_synapse.pas"/>
+</CONFIG>

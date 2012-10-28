@@ -4,32 +4,82 @@
     <PathDelim Value="\"/>
     <Version Value="9"/>
     <BuildModes Active="Default"/>
-    <Units Count="2">
+    <Units Count="5">
       <Unit0>
         <Filename Value="pMEMS.lpr"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="pMEMS"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="22"/>
       </Unit0>
       <Unit1>
         <Filename Value="umems.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="MEMS"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uMEMS"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
-        <CursorPos X="18" Y="18"/>
-        <UsageCount Value="20"/>
+        <TopLine Value="25"/>
+        <CursorPos X="28" Y="57"/>
+        <UsageCount Value="22"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
+      <Unit2>
+        <Filename Value="COM\CPortAbout.pas"/>
+        <HasResources Value="True"/>
+        <UnitName Value="CPortAbout"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="19" Y="17"/>
+        <UsageCount Value="10"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="COM\CPort.inc"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="47"/>
+        <CursorPos X="23" Y="15"/>
+        <UsageCount Value="10"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="COM\CPort.pas"/>
+        <UnitName Value="CPort"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="19"/>
+        <CursorPos X="14" Y="19"/>
+        <UsageCount Value="10"/>
+      </Unit4>
     </Units>
     <General>
       <ActiveWindowIndexAtStart Value="0"/>
     </General>
-    <JumpHistory Count="0" HistoryIndex="-1"/>
+    <JumpHistory Count="6" HistoryIndex="5">
+      <Position1>
+        <Filename Value="umems.pas"/>
+        <Caret Line="26" Column="16" TopLine="1"/>
+      </Position1>
+      <Position2>
+        <Filename Value="umems.pas"/>
+        <Caret Line="28" Column="20" TopLine="1"/>
+      </Position2>
+      <Position3>
+        <Filename Value="umems.pas"/>
+        <Caret Line="31" Column="20" TopLine="1"/>
+      </Position3>
+      <Position4>
+        <Filename Value="umems.pas"/>
+        <Caret Line="52" Column="8" TopLine="19"/>
+      </Position4>
+      <Position5>
+        <Filename Value="umems.pas"/>
+        <Caret Line="54" Column="8" TopLine="21"/>
+      </Position5>
+      <Position6>
+        <Filename Value="umems.pas"/>
+        <Caret Line="57" Column="29" TopLine="24"/>
+      </Position6>
+    </JumpHistory>
   </ProjectSession>
 </CONFIG>
