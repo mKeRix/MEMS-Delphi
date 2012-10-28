@@ -4,12 +4,12 @@
     <PathDelim Value="\"/>
     <Version Value="9"/>
     <BuildModes Active="Default"/>
-    <Units Count="5">
+    <Units Count="6">
       <Unit0>
         <Filename Value="pMEMS.lpr"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="pMEMS"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="26"/>
       </Unit0>
       <Unit1>
         <Filename Value="umems.pas"/>
@@ -21,9 +21,9 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="25"/>
-        <CursorPos X="28" Y="57"/>
-        <UsageCount Value="22"/>
+        <TopLine Value="107"/>
+        <CursorPos X="18" Y="144"/>
+        <UsageCount Value="26"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -34,14 +34,14 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="19" Y="17"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit2>
       <Unit3>
         <Filename Value="COM\CPort.inc"/>
         <WindowIndex Value="0"/>
         <TopLine Value="47"/>
         <CursorPos X="23" Y="15"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit3>
       <Unit4>
         <Filename Value="COM\CPort.pas"/>
@@ -49,37 +49,141 @@
         <WindowIndex Value="0"/>
         <TopLine Value="19"/>
         <CursorPos X="14" Y="19"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit4>
+      <Unit5>
+        <Filename Value="G:\lazarus\lcl\customtimer.pas"/>
+        <UnitName Value="CustomTimer"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="162"/>
+        <CursorPos X="1" Y="181"/>
+        <UsageCount Value="10"/>
+      </Unit5>
     </Units>
     <General>
       <ActiveWindowIndexAtStart Value="0"/>
     </General>
-    <JumpHistory Count="6" HistoryIndex="5">
+    <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="umems.pas"/>
-        <Caret Line="26" Column="16" TopLine="1"/>
+        <Caret Line="106" Column="26" TopLine="81"/>
       </Position1>
       <Position2>
         <Filename Value="umems.pas"/>
-        <Caret Line="28" Column="20" TopLine="1"/>
+        <Caret Line="116" Column="30" TopLine="88"/>
       </Position2>
       <Position3>
         <Filename Value="umems.pas"/>
-        <Caret Line="31" Column="20" TopLine="1"/>
+        <Caret Line="103" Column="20" TopLine="75"/>
       </Position3>
       <Position4>
         <Filename Value="umems.pas"/>
-        <Caret Line="52" Column="8" TopLine="19"/>
+        <Caret Line="100" Column="11" TopLine="81"/>
       </Position4>
       <Position5>
         <Filename Value="umems.pas"/>
-        <Caret Line="54" Column="8" TopLine="21"/>
+        <Caret Line="104" Column="20" TopLine="85"/>
       </Position5>
       <Position6>
         <Filename Value="umems.pas"/>
-        <Caret Line="57" Column="29" TopLine="24"/>
+        <Caret Line="109" Column="25" TopLine="91"/>
       </Position6>
+      <Position7>
+        <Filename Value="umems.pas"/>
+        <Caret Line="94" Column="45" TopLine="94"/>
+      </Position7>
+      <Position8>
+        <Filename Value="umems.pas"/>
+        <Caret Line="95" Column="45" TopLine="95"/>
+      </Position8>
+      <Position9>
+        <Filename Value="umems.pas"/>
+        <Caret Line="96" Column="45" TopLine="96"/>
+      </Position9>
+      <Position10>
+        <Filename Value="umems.pas"/>
+        <Caret Line="97" Column="45" TopLine="97"/>
+      </Position10>
+      <Position11>
+        <Filename Value="umems.pas"/>
+        <Caret Line="98" Column="45" TopLine="98"/>
+      </Position11>
+      <Position12>
+        <Filename Value="umems.pas"/>
+        <Caret Line="99" Column="45" TopLine="99"/>
+      </Position12>
+      <Position13>
+        <Filename Value="umems.pas"/>
+        <Caret Line="126" Column="34" TopLine="99"/>
+      </Position13>
+      <Position14>
+        <Filename Value="umems.pas"/>
+        <Caret Line="125" Column="34" TopLine="98"/>
+      </Position14>
+      <Position15>
+        <Filename Value="umems.pas"/>
+        <Caret Line="124" Column="34" TopLine="97"/>
+      </Position15>
+      <Position16>
+        <Filename Value="umems.pas"/>
+        <Caret Line="155" Column="25" TopLine="118"/>
+      </Position16>
+      <Position17>
+        <Filename Value="umems.pas"/>
+        <Caret Line="123" Column="34" TopLine="101"/>
+      </Position17>
+      <Position18>
+        <Filename Value="umems.pas"/>
+        <Caret Line="122" Column="34" TopLine="100"/>
+      </Position18>
+      <Position19>
+        <Filename Value="umems.pas"/>
+        <Caret Line="132" Column="18" TopLine="90"/>
+      </Position19>
+      <Position20>
+        <Filename Value="umems.pas"/>
+        <Caret Line="133" Column="18" TopLine="96"/>
+      </Position20>
+      <Position21>
+        <Filename Value="umems.pas"/>
+        <Caret Line="134" Column="18" TopLine="97"/>
+      </Position21>
+      <Position22>
+        <Filename Value="umems.pas"/>
+        <Caret Line="135" Column="18" TopLine="98"/>
+      </Position22>
+      <Position23>
+        <Filename Value="umems.pas"/>
+        <Caret Line="136" Column="18" TopLine="99"/>
+      </Position23>
+      <Position24>
+        <Filename Value="umems.pas"/>
+        <Caret Line="137" Column="18" TopLine="100"/>
+      </Position24>
+      <Position25>
+        <Filename Value="umems.pas"/>
+        <Caret Line="138" Column="18" TopLine="101"/>
+      </Position25>
+      <Position26>
+        <Filename Value="umems.pas"/>
+        <Caret Line="139" Column="18" TopLine="102"/>
+      </Position26>
+      <Position27>
+        <Filename Value="umems.pas"/>
+        <Caret Line="140" Column="18" TopLine="103"/>
+      </Position27>
+      <Position28>
+        <Filename Value="umems.pas"/>
+        <Caret Line="141" Column="18" TopLine="104"/>
+      </Position28>
+      <Position29>
+        <Filename Value="umems.pas"/>
+        <Caret Line="142" Column="18" TopLine="105"/>
+      </Position29>
+      <Position30>
+        <Filename Value="umems.pas"/>
+        <Caret Line="143" Column="18" TopLine="106"/>
+      </Position30>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>

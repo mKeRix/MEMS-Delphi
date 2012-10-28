@@ -1,29 +1,274 @@
 object MEMS: TMEMS
   Left = 248
-  Height = 282
+  Height = 390
   Top = 110
-  Width = 439
+  Width = 262
   Caption = 'MEMS'
-  ClientHeight = 282
-  ClientWidth = 439
+  ClientHeight = 390
+  ClientWidth = 262
   OnCreate = FormCreate
   LCLVersion = '1.0.2.0'
   object bConnect: TButton
-    Left = 24
-    Height = 24
-    Top = 232
-    Width = 92
-    Caption = 'Connect'
-    OnClick = bConnectClick
-    TabOrder = 0
-  end
-  object bRead: TButton
-    Left = 144
+    Left = 16
     Height = 25
-    Top = 232
-    Width = 91
-    Caption = 'Read'
-    OnClick = bReadClick
+    Top = 312
+    Width = 104
+    Caption = 'Connect to'
+    OnClick = bConnectClick
     TabOrder = 1
+    TabStop = False
+  end
+  object bStart: TButton
+    Left = 16
+    Height = 25
+    Top = 351
+    Width = 104
+    Caption = 'Start'
+    Enabled = False
+    OnClick = bStartClick
+    TabOrder = 2
+    TabStop = False
+  end
+  object ePort: TEdit
+    Left = 136
+    Height = 23
+    Top = 314
+    Width = 108
+    TabOrder = 0
+    Text = 'COM0'
+  end
+  object lD1: TLabel
+    Left = 112
+    Height = 16
+    Top = 16
+    Width = 132
+    AutoSize = False
+    Caption = '0'
+    ParentColor = False
+    WordWrap = True
+  end
+  object bStop: TButton
+    Left = 136
+    Height = 25
+    Top = 351
+    Width = 108
+    Caption = 'Stop'
+    Enabled = False
+    OnClick = bStopClick
+    TabOrder = 3
+    TabStop = False
+  end
+  object lD2: TLabel
+    Left = 112
+    Height = 16
+    Top = 40
+    Width = 132
+    AutoSize = False
+    Caption = '0'
+    ParentColor = False
+    WordWrap = True
+  end
+  object lD3: TLabel
+    Left = 112
+    Height = 16
+    Top = 64
+    Width = 132
+    AutoSize = False
+    Caption = '0'
+    ParentColor = False
+    WordWrap = True
+  end
+  object lD4: TLabel
+    Left = 112
+    Height = 16
+    Top = 88
+    Width = 132
+    AutoSize = False
+    Caption = '0'
+    ParentColor = False
+    WordWrap = True
+  end
+  object lD5: TLabel
+    Left = 112
+    Height = 16
+    Top = 112
+    Width = 132
+    AutoSize = False
+    Caption = '0'
+    ParentColor = False
+    WordWrap = True
+  end
+  object lD6: TLabel
+    Left = 112
+    Height = 16
+    Top = 136
+    Width = 132
+    AutoSize = False
+    Caption = '0'
+    ParentColor = False
+    WordWrap = True
+  end
+  object lD7: TLabel
+    Left = 112
+    Height = 16
+    Top = 160
+    Width = 132
+    AutoSize = False
+    Caption = '0'
+    ParentColor = False
+    WordWrap = True
+  end
+  object lD8: TLabel
+    Left = 112
+    Height = 16
+    Top = 184
+    Width = 132
+    AutoSize = False
+    Caption = '0'
+    ParentColor = False
+    WordWrap = True
+  end
+  object lD9: TLabel
+    Left = 112
+    Height = 16
+    Top = 208
+    Width = 132
+    AutoSize = False
+    Caption = '0'
+    ParentColor = False
+    WordWrap = True
+  end
+  object lD10: TLabel
+    Left = 112
+    Height = 16
+    Top = 232
+    Width = 132
+    AutoSize = False
+    Caption = '0'
+    ParentColor = False
+    WordWrap = True
+  end
+  object lD11: TLabel
+    Left = 112
+    Height = 16
+    Top = 256
+    Width = 132
+    AutoSize = False
+    Caption = '0'
+    ParentColor = False
+    WordWrap = True
+  end
+  object lD12: TLabel
+    Left = 112
+    Height = 16
+    Top = 280
+    Width = 132
+    AutoSize = False
+    Caption = '0'
+    ParentColor = False
+    WordWrap = True
+  end
+  object Label1: TLabel
+    Left = 16
+    Height = 16
+    Top = 16
+    Width = 39
+    Caption = 'Value 1'
+    ParentColor = False
+  end
+  object Label2: TLabel
+    Left = 16
+    Height = 16
+    Top = 40
+    Width = 39
+    Caption = 'Value 2'
+    ParentColor = False
+  end
+  object Label3: TLabel
+    Left = 16
+    Height = 16
+    Top = 64
+    Width = 39
+    Caption = 'Value 3'
+    ParentColor = False
+  end
+  object Label4: TLabel
+    Left = 16
+    Height = 16
+    Top = 88
+    Width = 39
+    Caption = 'Value 4'
+    ParentColor = False
+  end
+  object Label5: TLabel
+    Left = 16
+    Height = 16
+    Top = 112
+    Width = 39
+    Caption = 'Value 5'
+    ParentColor = False
+  end
+  object Label6: TLabel
+    Left = 16
+    Height = 16
+    Top = 136
+    Width = 39
+    Caption = 'Value 6'
+    ParentColor = False
+  end
+  object Label7: TLabel
+    Left = 16
+    Height = 16
+    Top = 160
+    Width = 39
+    Caption = 'Value 7'
+    ParentColor = False
+  end
+  object Label8: TLabel
+    Left = 16
+    Height = 16
+    Top = 184
+    Width = 39
+    Caption = 'Value 8'
+    ParentColor = False
+  end
+  object Label9: TLabel
+    Left = 16
+    Height = 16
+    Top = 208
+    Width = 39
+    Caption = 'Value 9'
+    ParentColor = False
+  end
+  object Label10: TLabel
+    Left = 16
+    Height = 16
+    Top = 232
+    Width = 45
+    Caption = 'Value 10'
+    ParentColor = False
+  end
+  object Label11: TLabel
+    Left = 16
+    Height = 16
+    Top = 256
+    Width = 45
+    Caption = 'Value 11'
+    ParentColor = False
+  end
+  object Label12: TLabel
+    Left = 16
+    Height = 16
+    Top = 280
+    Width = 45
+    Caption = 'Value 12'
+    ParentColor = False
+  end
+  object tDataRead: TTimer
+    Enabled = False
+    Interval = 100
+    OnTimer = tDataReadTimer
+    left = 216
+    top = 8
   end
 end
