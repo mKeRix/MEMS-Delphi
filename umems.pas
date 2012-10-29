@@ -21,6 +21,7 @@ type
     Label10: TLabel;
     Label11: TLabel;
     Label12: TLabel;
+    Label0: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
@@ -33,6 +34,7 @@ type
     lD10: TLabel;
     lD11: TLabel;
     lD12: TLabel;
+    lD0: TLabel;
     lD2: TLabel;
     lD3: TLabel;
     lD4: TLabel;
@@ -79,7 +81,7 @@ begin
     if (fQuotes and(fText[vI]=fSep)and vOn)or(Not(fQuotes) and (fText[vI]=fSep)) then
     begin
       if fTrim then vBuffer:=Trim(vBuffer);
-      if vBuffer='' then vBuffer:=fSep; // !!! sonst läuft z.B. split(',**',',') auf einen Hammer...
+      if vBuffer='' then vBuffer:=fSep;
       if vBuffer[1]=fSep then
         vBuffer:=Copy(vBuffer,2,Length(vBuffer));
       Result.Add(vBuffer);
@@ -107,19 +109,19 @@ end;
 
 procedure TMEMS.FormCreate(Sender: TObject);
 begin
-  //placeholder (or is it?)
   serial := TBlockSerial.Create;
   datalist := TStringList.Create;
 end;
 
 procedure TMEMS.tDataReadTimer(Sender: TObject);
 begin
-  //read data here
+  //read data every 100ms
   data := serial.RecvPacket(10);
   datalist := Split(data,';');
 
   if datalist.Count > 11 then
   begin
+    lD0.Caption := datalist[0];
     lD1.Caption := datalist[1];
     lD2.Caption := datalist[2];
     lD3.Caption := datalist[3];
