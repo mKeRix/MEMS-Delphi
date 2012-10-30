@@ -15,6 +15,8 @@ type
   TMEMS = class(TForm)
     bConnect: TButton;
     bStart: TButton;
+    bOn: TButton;
+    bOff: TButton;
     bStop: TButton;
     ePort: TEdit;
     Label1: TLabel;
@@ -45,6 +47,8 @@ type
     lD9: TLabel;
     tDataRead: TTimer;
     procedure bConnectClick(Sender: TObject);
+    procedure bOffClick(Sender: TObject);
+    procedure bOnClick(Sender: TObject);
     procedure bStartClick(Sender: TObject);
     procedure bStopClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -149,6 +153,18 @@ begin
   bConnect.Enabled := false;
   ePort.Enabled := false;
   bStart.Enabled := true;
+  bOn.Enabled := true;
+  bOff.Enabled := true;
+end;
+
+procedure TMEMS.bOffClick(Sender: TObject);
+begin
+  serial.SendString('l');
+end;
+
+procedure TMEMS.bOnClick(Sender: TObject);
+begin
+  serial.SendString('i');
 end;
 
 procedure TMEMS.bStartClick(Sender: TObject);

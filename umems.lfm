@@ -1,10 +1,10 @@
 object MEMS: TMEMS
   Left = 296
-  Height = 404
+  Height = 438
   Top = 126
   Width = 262
   Caption = 'MEMS'
-  ClientHeight = 404
+  ClientHeight = 438
   ClientWidth = 262
   OnCreate = FormCreate
   LCLVersion = '1.0.2.0'
@@ -26,7 +26,7 @@ object MEMS: TMEMS
     Caption = 'Start'
     Enabled = False
     OnClick = bStartClick
-    TabOrder = 2
+    TabOrder = 5
     TabStop = False
   end
   object ePort: TEdit
@@ -55,7 +55,7 @@ object MEMS: TMEMS
     Caption = 'Stop'
     Enabled = False
     OnClick = bStopClick
-    TabOrder = 3
+    TabOrder = 4
     TabStop = False
   end
   object lD2: TLabel
@@ -281,6 +281,28 @@ object MEMS: TMEMS
     Width = 45
     Caption = 'Number'
     ParentColor = False
+  end
+  object bOn: TButton
+    Left = 16
+    Height = 25
+    Top = 400
+    Width = 104
+    Caption = 'On'
+    Enabled = False
+    OnClick = bOnClick
+    TabOrder = 3
+    TabStop = False
+  end
+  object bOff: TButton
+    Left = 136
+    Height = 25
+    Top = 400
+    Width = 108
+    Caption = 'Off'
+    Enabled = False
+    OnClick = bOffClick
+    TabOrder = 2
+    TabStop = False
   end
   object tDataRead: TTimer
     Enabled = False
