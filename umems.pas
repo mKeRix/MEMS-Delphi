@@ -64,9 +64,12 @@ var
 
 implementation
 var
+  FormatSettings: TFormatSettings;
   serial: TBlockSerial;
   data: String;
   datalist: TStringList;
+  number: Integer;
+  accx, accy, accz, gyrox, gyroy, gyroz, temp1, magnetox, magnetoy, magnetoz, air, temp2: Double;
 
 {$R *.lfm}
 
@@ -115,6 +118,8 @@ procedure TMEMS.FormCreate(Sender: TObject);
 begin
   serial := TBlockSerial.Create;
   datalist := TStringList.Create;
+
+  FormatSettings.DecimalSeparator := '.';
 end;
 
 procedure TMEMS.tDataReadTimer(Sender: TObject);
@@ -138,6 +143,21 @@ begin
     lD10.Caption := datalist[10];
     lD11.Caption := datalist[11];
     lD12.Caption := datalist[12];
+
+    //really early version of saving the data as float variables for later calculations - see Github
+    number := StrToInt(datalist[0]);
+    accx := StrToFloat(datalist[1], FormatSettings);
+    accy := StrToFloat(datalist[2], FormatSettings);
+    accz := StrToFloat(datalist[3], FormatSettings);
+    gyrox := StrToFloat(datalist[4], FormatSettings);
+    gyroy := StrToFloat(datalist[5], FormatSettings);
+    gyroz := StrToFloat(datalist[6], FormatSettings);
+    temp1 := StrToFloat(datalist[7], FormatSettings);
+    magnetox := StrToFloat(datalist[8], FormatSettings);
+    magnetoy := StrToFloat(datalist[9], FormatSettings);
+    magnetoz := StrToFloat(datalist[10], FormatSettings);
+    air := StrToFloat(datalist[11], FormatSettings);
+    temp2 := StrToFloat(datalist[12], FormatSettings);
   end;
 
   tDataRead.Enabled := false;
@@ -159,7 +179,7 @@ end;
 
 procedure TMEMS.bOffClick(Sender: TObject);
 begin
-  serial.SendString('l');
+  serial.SendString('I');
 end;
 
 procedure TMEMS.bOnClick(Sender: TObject);

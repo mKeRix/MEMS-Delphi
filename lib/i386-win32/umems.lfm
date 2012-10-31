@@ -1,17 +1,17 @@
 object MEMS: TMEMS
-  Left = 248
-  Height = 390
-  Top = 110
+  Left = 296
+  Height = 438
+  Top = 126
   Width = 262
   Caption = 'MEMS'
-  ClientHeight = 390
+  ClientHeight = 438
   ClientWidth = 262
   OnCreate = FormCreate
   LCLVersion = '1.0.2.0'
   object bConnect: TButton
     Left = 16
     Height = 25
-    Top = 312
+    Top = 328
     Width = 104
     Caption = 'Connect to'
     OnClick = bConnectClick
@@ -21,18 +21,18 @@ object MEMS: TMEMS
   object bStart: TButton
     Left = 16
     Height = 25
-    Top = 351
+    Top = 367
     Width = 104
     Caption = 'Start'
     Enabled = False
     OnClick = bStartClick
-    TabOrder = 2
+    TabOrder = 5
     TabStop = False
   end
   object ePort: TEdit
     Left = 136
     Height = 23
-    Top = 314
+    Top = 330
     Width = 108
     TabOrder = 0
     Text = 'COM0'
@@ -40,7 +40,7 @@ object MEMS: TMEMS
   object lD1: TLabel
     Left = 112
     Height = 16
-    Top = 16
+    Top = 32
     Width = 132
     AutoSize = False
     Caption = '0'
@@ -50,18 +50,18 @@ object MEMS: TMEMS
   object bStop: TButton
     Left = 136
     Height = 25
-    Top = 351
+    Top = 367
     Width = 108
     Caption = 'Stop'
     Enabled = False
     OnClick = bStopClick
-    TabOrder = 3
+    TabOrder = 4
     TabStop = False
   end
   object lD2: TLabel
     Left = 112
     Height = 16
-    Top = 40
+    Top = 56
     Width = 132
     AutoSize = False
     Caption = '0'
@@ -71,7 +71,7 @@ object MEMS: TMEMS
   object lD3: TLabel
     Left = 112
     Height = 16
-    Top = 64
+    Top = 80
     Width = 132
     AutoSize = False
     Caption = '0'
@@ -81,7 +81,7 @@ object MEMS: TMEMS
   object lD4: TLabel
     Left = 112
     Height = 16
-    Top = 88
+    Top = 104
     Width = 132
     AutoSize = False
     Caption = '0'
@@ -91,7 +91,7 @@ object MEMS: TMEMS
   object lD5: TLabel
     Left = 112
     Height = 16
-    Top = 112
+    Top = 128
     Width = 132
     AutoSize = False
     Caption = '0'
@@ -101,7 +101,7 @@ object MEMS: TMEMS
   object lD6: TLabel
     Left = 112
     Height = 16
-    Top = 136
+    Top = 152
     Width = 132
     AutoSize = False
     Caption = '0'
@@ -111,7 +111,7 @@ object MEMS: TMEMS
   object lD7: TLabel
     Left = 112
     Height = 16
-    Top = 160
+    Top = 176
     Width = 132
     AutoSize = False
     Caption = '0'
@@ -121,7 +121,7 @@ object MEMS: TMEMS
   object lD8: TLabel
     Left = 112
     Height = 16
-    Top = 184
+    Top = 200
     Width = 132
     AutoSize = False
     Caption = '0'
@@ -131,7 +131,7 @@ object MEMS: TMEMS
   object lD9: TLabel
     Left = 112
     Height = 16
-    Top = 208
+    Top = 224
     Width = 132
     AutoSize = False
     Caption = '0'
@@ -141,7 +141,7 @@ object MEMS: TMEMS
   object lD10: TLabel
     Left = 112
     Height = 16
-    Top = 232
+    Top = 248
     Width = 132
     AutoSize = False
     Caption = '0'
@@ -151,7 +151,7 @@ object MEMS: TMEMS
   object lD11: TLabel
     Left = 112
     Height = 16
-    Top = 256
+    Top = 272
     Width = 132
     AutoSize = False
     Caption = '0'
@@ -161,7 +161,7 @@ object MEMS: TMEMS
   object lD12: TLabel
     Left = 112
     Height = 16
-    Top = 280
+    Top = 296
     Width = 132
     AutoSize = False
     Caption = '0'
@@ -171,104 +171,144 @@ object MEMS: TMEMS
   object Label1: TLabel
     Left = 16
     Height = 16
-    Top = 16
-    Width = 39
-    Caption = 'Value 1'
+    Top = 32
+    Width = 77
+    Caption = 'Acceleration X'
     ParentColor = False
   end
   object Label2: TLabel
     Left = 16
     Height = 16
-    Top = 40
-    Width = 39
-    Caption = 'Value 2'
+    Top = 56
+    Width = 77
+    Caption = 'Acceleration Y'
     ParentColor = False
   end
   object Label3: TLabel
     Left = 16
     Height = 16
-    Top = 64
-    Width = 39
-    Caption = 'Value 3'
+    Top = 80
+    Width = 77
+    Caption = 'Acceleration Z'
     ParentColor = False
   end
   object Label4: TLabel
     Left = 16
     Height = 16
-    Top = 88
-    Width = 39
-    Caption = 'Value 4'
+    Top = 104
+    Width = 67
+    Caption = 'Gyroscope X'
     ParentColor = False
   end
   object Label5: TLabel
     Left = 16
     Height = 16
-    Top = 112
-    Width = 39
-    Caption = 'Value 5'
+    Top = 128
+    Width = 67
+    Caption = 'Gyroscope Y'
     ParentColor = False
   end
   object Label6: TLabel
     Left = 16
     Height = 16
-    Top = 136
-    Width = 39
-    Caption = 'Value 6'
+    Top = 152
+    Width = 67
+    Caption = 'Gyroscope Z'
     ParentColor = False
   end
   object Label7: TLabel
     Left = 16
     Height = 16
-    Top = 160
-    Width = 39
-    Caption = 'Value 7'
+    Top = 176
+    Width = 69
+    Caption = 'Temperature'
     ParentColor = False
   end
   object Label8: TLabel
     Left = 16
     Height = 16
-    Top = 184
-    Width = 39
-    Caption = 'Value 8'
+    Top = 200
+    Width = 90
+    Caption = 'Magnetometer X'
     ParentColor = False
   end
   object Label9: TLabel
     Left = 16
     Height = 16
-    Top = 208
-    Width = 39
-    Caption = 'Value 9'
+    Top = 224
+    Width = 90
+    Caption = 'Magnetometer Y'
     ParentColor = False
   end
   object Label10: TLabel
     Left = 16
     Height = 16
-    Top = 232
-    Width = 45
-    Caption = 'Value 10'
+    Top = 248
+    Width = 90
+    Caption = 'Magnetometer Z'
     ParentColor = False
   end
   object Label11: TLabel
     Left = 16
     Height = 16
-    Top = 256
-    Width = 45
-    Caption = 'Value 11'
+    Top = 272
+    Width = 63
+    Caption = 'Air pressure'
     ParentColor = False
   end
   object Label12: TLabel
     Left = 16
     Height = 16
-    Top = 280
-    Width = 45
-    Caption = 'Value 12'
+    Top = 296
+    Width = 69
+    Caption = 'Temperature'
     ParentColor = False
+  end
+  object lD0: TLabel
+    Left = 112
+    Height = 16
+    Top = 8
+    Width = 132
+    AutoSize = False
+    Caption = '0'
+    ParentColor = False
+    WordWrap = True
+  end
+  object Label0: TLabel
+    Left = 16
+    Height = 16
+    Top = 8
+    Width = 45
+    Caption = 'Number'
+    ParentColor = False
+  end
+  object bOn: TButton
+    Left = 16
+    Height = 25
+    Top = 400
+    Width = 104
+    Caption = 'On'
+    Enabled = False
+    OnClick = bOnClick
+    TabOrder = 3
+    TabStop = False
+  end
+  object bOff: TButton
+    Left = 136
+    Height = 25
+    Top = 400
+    Width = 108
+    Caption = 'Off'
+    Enabled = False
+    OnClick = bOffClick
+    TabOrder = 2
+    TabStop = False
   end
   object tDataRead: TTimer
     Enabled = False
     Interval = 100
     OnTimer = tDataReadTimer
-    left = 216
-    top = 8
+    left = 256
+    top = 65512
   end
 end
