@@ -1,41 +1,33 @@
 object MEMS: TMEMS
   Left = 296
-  Height = 438
+  Height = 402
   Top = 126
   Width = 262
   Caption = 'MEMS'
-  ClientHeight = 438
+  ClientHeight = 402
   ClientWidth = 262
   OnCreate = FormCreate
   LCLVersion = '1.0.2.0'
   object bConnect: TButton
     Left = 16
     Height = 25
-    Top = 328
+    Top = 296
     Width = 104
     Caption = 'Connect to'
     OnClick = bConnectClick
-    TabOrder = 1
+    TabOrder = 0
     TabStop = False
   end
   object bStart: TButton
     Left = 16
     Height = 25
-    Top = 367
+    Top = 335
     Width = 104
     Caption = 'Start'
     Enabled = False
     OnClick = bStartClick
-    TabOrder = 5
+    TabOrder = 4
     TabStop = False
-  end
-  object ePort: TEdit
-    Left = 136
-    Height = 23
-    Top = 330
-    Width = 108
-    TabOrder = 0
-    Text = 'COM0'
   end
   object lD1: TLabel
     Left = 112
@@ -50,12 +42,12 @@ object MEMS: TMEMS
   object bStop: TButton
     Left = 136
     Height = 25
-    Top = 367
+    Top = 335
     Width = 108
     Caption = 'Stop'
     Enabled = False
     OnClick = bStopClick
-    TabOrder = 4
+    TabOrder = 3
     TabStop = False
   end
   object lD2: TLabel
@@ -148,20 +140,10 @@ object MEMS: TMEMS
     ParentColor = False
     WordWrap = True
   end
-  object lD11: TLabel
-    Left = 112
-    Height = 16
-    Top = 272
-    Width = 132
-    AutoSize = False
-    Caption = '0'
-    ParentColor = False
-    WordWrap = True
-  end
   object lD12: TLabel
     Left = 112
     Height = 16
-    Top = 296
+    Top = 272
     Width = 132
     AutoSize = False
     Caption = '0'
@@ -220,8 +202,8 @@ object MEMS: TMEMS
     Left = 16
     Height = 16
     Top = 176
-    Width = 69
-    Caption = 'Temperature'
+    Width = 90
+    Caption = 'Magnetometer X'
     ParentColor = False
   end
   object Label8: TLabel
@@ -229,7 +211,7 @@ object MEMS: TMEMS
     Height = 16
     Top = 200
     Width = 90
-    Caption = 'Magnetometer X'
+    Caption = 'Magnetometer Y'
     ParentColor = False
   end
   object Label9: TLabel
@@ -237,29 +219,21 @@ object MEMS: TMEMS
     Height = 16
     Top = 224
     Width = 90
-    Caption = 'Magnetometer Y'
+    Caption = 'Magnetometer Z'
     ParentColor = False
   end
   object Label10: TLabel
     Left = 16
     Height = 16
     Top = 248
-    Width = 90
-    Caption = 'Magnetometer Z'
+    Width = 63
+    Caption = 'Air pressure'
     ParentColor = False
   end
   object Label11: TLabel
     Left = 16
     Height = 16
     Top = 272
-    Width = 63
-    Caption = 'Air pressure'
-    ParentColor = False
-  end
-  object Label12: TLabel
-    Left = 16
-    Height = 16
-    Top = 296
     Width = 69
     Caption = 'Temperature'
     ParentColor = False
@@ -285,24 +259,38 @@ object MEMS: TMEMS
   object bOn: TButton
     Left = 16
     Height = 25
-    Top = 400
+    Top = 368
     Width = 104
     Caption = 'On'
     Enabled = False
     OnClick = bOnClick
-    TabOrder = 3
+    TabOrder = 2
     TabStop = False
   end
   object bOff: TButton
     Left = 136
     Height = 25
-    Top = 400
+    Top = 368
     Width = 108
     Caption = 'Off'
     Enabled = False
     OnClick = bOffClick
-    TabOrder = 2
+    TabOrder = 1
     TabStop = False
+  end
+  object COMBox: TComboBox
+    Left = 136
+    Height = 23
+    Top = 296
+    Width = 108
+    ItemHeight = 15
+    ItemIndex = 0
+    Items.Strings = (
+      'Select port'
+    )
+    Style = csDropDownList
+    TabOrder = 5
+    Text = 'Select port'
   end
   object tDataRead: TTimer
     Enabled = False
