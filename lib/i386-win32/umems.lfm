@@ -1,19 +1,20 @@
 object MEMS: TMEMS
   Left = 296
-  Height = 402
+  Height = 426
   Top = 126
-  Width = 262
+  Width = 275
   Caption = 'MEMS'
-  ClientHeight = 402
-  ClientWidth = 262
+  ClientHeight = 406
+  ClientWidth = 275
+  Menu = MainMenu
   OnCreate = FormCreate
   LCLVersion = '1.0.2.0'
   object bConnect: TButton
     Left = 16
     Height = 25
     Top = 296
-    Width = 104
-    Caption = 'Connect to'
+    Width = 112
+    Caption = 'Verbinde mit'
     OnClick = bConnectClick
     TabOrder = 0
     TabStop = False
@@ -22,7 +23,7 @@ object MEMS: TMEMS
     Left = 16
     Height = 25
     Top = 335
-    Width = 104
+    Width = 112
     Caption = 'Start'
     Enabled = False
     OnClick = bStartClick
@@ -30,7 +31,7 @@ object MEMS: TMEMS
     TabStop = False
   end
   object lD1: TLabel
-    Left = 112
+    Left = 128
     Height = 16
     Top = 32
     Width = 132
@@ -40,10 +41,10 @@ object MEMS: TMEMS
     WordWrap = True
   end
   object bStop: TButton
-    Left = 136
+    Left = 144
     Height = 25
     Top = 335
-    Width = 108
+    Width = 116
     Caption = 'Stop'
     Enabled = False
     OnClick = bStopClick
@@ -51,7 +52,7 @@ object MEMS: TMEMS
     TabStop = False
   end
   object lD2: TLabel
-    Left = 112
+    Left = 128
     Height = 16
     Top = 56
     Width = 132
@@ -61,7 +62,7 @@ object MEMS: TMEMS
     WordWrap = True
   end
   object lD3: TLabel
-    Left = 112
+    Left = 128
     Height = 16
     Top = 80
     Width = 132
@@ -71,7 +72,7 @@ object MEMS: TMEMS
     WordWrap = True
   end
   object lD4: TLabel
-    Left = 112
+    Left = 128
     Height = 16
     Top = 104
     Width = 132
@@ -81,7 +82,7 @@ object MEMS: TMEMS
     WordWrap = True
   end
   object lD5: TLabel
-    Left = 112
+    Left = 128
     Height = 16
     Top = 128
     Width = 132
@@ -91,7 +92,7 @@ object MEMS: TMEMS
     WordWrap = True
   end
   object lD6: TLabel
-    Left = 112
+    Left = 128
     Height = 16
     Top = 152
     Width = 132
@@ -101,7 +102,7 @@ object MEMS: TMEMS
     WordWrap = True
   end
   object lD7: TLabel
-    Left = 112
+    Left = 128
     Height = 16
     Top = 176
     Width = 132
@@ -111,7 +112,7 @@ object MEMS: TMEMS
     WordWrap = True
   end
   object lD8: TLabel
-    Left = 112
+    Left = 128
     Height = 16
     Top = 200
     Width = 132
@@ -121,7 +122,7 @@ object MEMS: TMEMS
     WordWrap = True
   end
   object lD9: TLabel
-    Left = 112
+    Left = 128
     Height = 16
     Top = 224
     Width = 132
@@ -131,7 +132,7 @@ object MEMS: TMEMS
     WordWrap = True
   end
   object lD10: TLabel
-    Left = 112
+    Left = 128
     Height = 16
     Top = 248
     Width = 132
@@ -140,8 +141,8 @@ object MEMS: TMEMS
     ParentColor = False
     WordWrap = True
   end
-  object lD12: TLabel
-    Left = 112
+  object lD11: TLabel
+    Left = 128
     Height = 16
     Top = 272
     Width = 132
@@ -154,24 +155,24 @@ object MEMS: TMEMS
     Left = 16
     Height = 16
     Top = 32
-    Width = 77
-    Caption = 'Acceleration X'
+    Width = 96
+    Caption = 'Beschleunigung X'
     ParentColor = False
   end
   object Label2: TLabel
     Left = 16
     Height = 16
     Top = 56
-    Width = 77
-    Caption = 'Acceleration Y'
+    Width = 96
+    Caption = 'Beschleunigung Y'
     ParentColor = False
   end
   object Label3: TLabel
     Left = 16
     Height = 16
     Top = 80
-    Width = 77
-    Caption = 'Acceleration Z'
+    Width = 96
+    Caption = 'Beschleunigung Z'
     ParentColor = False
   end
   object Label4: TLabel
@@ -202,44 +203,44 @@ object MEMS: TMEMS
     Left = 16
     Height = 16
     Top = 176
-    Width = 90
-    Caption = 'Magnetometer X'
+    Width = 72
+    Caption = 'Magnetfeld X'
     ParentColor = False
   end
   object Label8: TLabel
     Left = 16
     Height = 16
     Top = 200
-    Width = 90
-    Caption = 'Magnetometer Y'
+    Width = 72
+    Caption = 'Magnetfeld Y'
     ParentColor = False
   end
   object Label9: TLabel
     Left = 16
     Height = 16
     Top = 224
-    Width = 90
-    Caption = 'Magnetometer Z'
+    Width = 72
+    Caption = 'Magnetfeld Z'
     ParentColor = False
   end
   object Label10: TLabel
     Left = 16
     Height = 16
     Top = 248
-    Width = 63
-    Caption = 'Air pressure'
+    Width = 52
+    Caption = 'Luftdruck'
     ParentColor = False
   end
   object Label11: TLabel
     Left = 16
     Height = 16
     Top = 272
-    Width = 69
-    Caption = 'Temperature'
+    Width = 63
+    Caption = 'Temperatur'
     ParentColor = False
   end
   object lD0: TLabel
-    Left = 112
+    Left = 128
     Height = 16
     Top = 8
     Width = 132
@@ -252,45 +253,88 @@ object MEMS: TMEMS
     Left = 16
     Height = 16
     Top = 8
-    Width = 45
-    Caption = 'Number'
+    Width = 49
+    Caption = 'Nummer'
     ParentColor = False
   end
   object bOn: TButton
     Left = 16
     Height = 25
     Top = 368
-    Width = 104
-    Caption = 'On'
+    Width = 112
+    Caption = 'An'
     Enabled = False
     OnClick = bOnClick
     TabOrder = 2
     TabStop = False
   end
   object bOff: TButton
-    Left = 136
+    Left = 144
     Height = 25
     Top = 368
-    Width = 108
-    Caption = 'Off'
+    Width = 116
+    Caption = 'Aus'
     Enabled = False
     OnClick = bOffClick
     TabOrder = 1
     TabStop = False
   end
   object COMBox: TComboBox
-    Left = 136
+    Left = 144
     Height = 23
     Top = 296
-    Width = 108
+    Width = 88
     ItemHeight = 15
-    ItemIndex = 0
     Items.Strings = (
-      'Select port'
+      ''
     )
     Style = csDropDownList
     TabOrder = 5
-    Text = 'Select port'
+  end
+  object bRefresh: TBitBtn
+    Left = 237
+    Height = 23
+    Top = 296
+    Width = 23
+    Glyph.Data = {
+      36040000424D3604000000000000360000002800000010000000100000000100
+      2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00286E2D03256929AAFFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF002D7533C0296F2ED2FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF0038833EB9569D5EFF53995AFF2A712FFF266B2BFF2366
+      27FF206223C01D5E2040FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF0042924AE960A768FF8DCD97FF8ACB94FF87CA91FF84C98EFF81C8
+      8CFF60A768FF206324CC1D5F2140FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF0043944BBB62A96AFF5DA465FF35803BFF317A36FF5197
+      58FF82C88DFF5BA163FF21642599FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF004EA25709499C520245954CC2408F47D2FFFFFF00FFFFFF00327B
+      38C22D7533FF296F2EFF256A2AE0FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0046974EACFFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF0050A65903FFFFFF00FFFFFF0042924AAC3D8C
+      4503FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF0061BD6CE05DB868FF5AB364FF56AD5FC2FFFFFF00FFFFFF00489A50D24394
+      4BC23F8D46023A874109FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF0065C270998ECF97FFAAD9B1FF7AC383FF57AF61FF52A95CFF6FB778FF6BB3
+      74FF45954CBBFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF0068C6734065C371CC94D29CFFABDAB2FFA8D9AFFFA5D8ADFFA2D6AAFF9FD5
+      A7FF6CB474FF46974EDCFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF0068C7744066C472C063C06FFF60BC6BFF5DB767FF79C282FF75BE
+      7EFF50A659B9FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF005DB868D25AB3
+      64C0FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0062BE6DAA5EB9
+      6903FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
+    }
+    OnClick = bRefreshClick
+    Spacing = 0
+    TabOrder = 6
   end
   object tDataRead: TTimer
     Enabled = False
@@ -298,5 +342,26 @@ object MEMS: TMEMS
     OnTimer = tDataReadTimer
     left = 256
     top = 65512
+  end
+  object MainMenu: TMainMenu
+    left = 248
+    top = 24
+    object mFile: TMenuItem
+      Caption = 'Datei'
+      object mSave: TMenuItem
+        Caption = 'Speichern'
+      end
+      object mOpen: TMenuItem
+        Caption = 'Öffnen'
+      end
+    end
+    object mSensor: TMenuItem
+      Caption = 'Sensor'
+      Enabled = False
+      object mSettings: TMenuItem
+        Caption = 'Einstellungen'
+        OnClick = mSettingsClick
+      end
+    end
   end
 end
