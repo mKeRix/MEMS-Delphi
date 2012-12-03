@@ -288,7 +288,6 @@ object MEMS: TMEMS
     Items.Strings = (
       ''
     )
-    Style = csDropDownList
     TabOrder = 5
   end
   object bRefresh: TBitBtn
