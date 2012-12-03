@@ -15,10 +15,8 @@ type
   TMEMS = class(TForm)
     bConnect: TButton;
     bRefresh: TBitBtn;
-    bStart: TButton;
     bOn: TButton;
     bOff: TButton;
-    bStop: TButton;
     COMBox: TComboBox;
     Label1: TLabel;
     Label9: TLabel;
@@ -50,14 +48,15 @@ type
     mSettings: TMenuItem;
     mSave: TMenuItem;
     mOpen: TMenuItem;
+    Save: TSaveDialog;
     tDataRead: TTimer;
     procedure bConnectClick(Sender: TObject);
     procedure bOffClick(Sender: TObject);
     procedure bOnClick(Sender: TObject);
     procedure bRefreshClick(Sender: TObject);
-    procedure bStartClick(Sender: TObject);
-    procedure bStopClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure mOpenClick(Sender: TObject);
+    procedure mSaveClick(Sender: TObject);
     procedure mSettingsClick(Sender: TObject);
     procedure tDataReadTimer(Sender: TObject);
   private
@@ -70,14 +69,22 @@ var
   MEMS: TMEMS;
 
 implementation
+
+type values=Record
+                 number: Integer;
+                 accx, accy, accz, gyrox, gyroy, gyroz, magnetox, magnetoy, magnetoz, air, temp: Double;
+               end;
+
+               measuredvalues = Array of values;
+
 var
   FormatSettings: TFormatSettings;
   serial: TBlockSerial;
   connected: Boolean;
   data: String;
   datalist: TStringList;
-  number: Integer;
-  accx, accy, accz, gyrox, gyroy, gyroz, magnetox, magnetoy, magnetoz, air, temp: Double;
+  meval:measuredvalues;
+  filename:String[120];
 
 {$R *.lfm}
 
@@ -148,6 +155,33 @@ begin
   end;
 end;
 
+procedure TMEMS.mOpenClick(Sender: TObject);
+begin
+  //to be implemented
+end;
+
+procedure TMEMS.mSaveClick(Sender: TObject);
+var i:Integer;
+    valuefile:Text;
+    line:String;
+begin
+  Save.InitialDir:='';
+  if(Save.execute)
+  then
+  begin
+    filename:=Save.FileName;
+    AssignFile(valuefile, Save.FileName);
+    Rewrite(valuefile);
+    for i:=1 to High(meval) do
+    begin
+      //bring it in a normal .csv format
+      line := IntToStr(meval[i].number)+';'+FloatToStr(meval[i].accx)+';'+FloatToStr(meval[i].accy)+';'+FloatToStr(meval[i].accz)+';'+FloatToStr(meval[i].gyrox)+';'+FloatToStr(meval[i].gyroy)+';'+FloatToStr(meval[i].gyroz)+';'+FloatToStr(meval[i].magnetox)+';'+FloatToStr(meval[i].magnetoy)+';'+FloatToStr(meval[i].magnetoz)+';'+FloatToStr(meval[i].air)+';'+FloatToStr(meval[i].temp);
+      WriteLn(valuefile,line);
+    end;
+    CloseFile(valuefile);
+  end;
+end;
+
 procedure TMEMS.mSettingsClick(Sender: TObject);
 begin
   if Settings.ShowModal= mrOK then
@@ -156,11 +190,15 @@ begin
     serial.SendString('gyro_fs '+Settings.GyroBox.Text+Char(13));
     serial.SendString('refresh '+Settings.FrequencyBox.Text+Char(13));
 
-    tDataRead.Interval := StrToInt(Settings.FrequencyBox.Text) div 1000;
+    tDataRead.Enabled := false;
+    tDataRead.Interval := 1000 * 1 div StrToInt(Settings.FrequencyBox.Text);
+    tDataRead.Enabled := true;
   end;
 end;
 
 procedure TMEMS.tDataReadTimer(Sender: TObject);
+var
+  currentnumber: Integer;
 begin
   //read data every 100ms
   data := serial.RecvPacket(10);
@@ -183,18 +221,20 @@ begin
     lD11.Caption := datalist[11];
 
     //really early version of saving the data as float variables for later calculations - see Github
-    number := StrToInt(datalist[0]);
-    accx := StrToFloat(datalist[1], FormatSettings);
-    accy := StrToFloat(datalist[2], FormatSettings);
-    accz := StrToFloat(datalist[3], FormatSettings);
-    gyrox := StrToFloat(datalist[4], FormatSettings);
-    gyroy := StrToFloat(datalist[5], FormatSettings);
-    gyroz := StrToFloat(datalist[6], FormatSettings);
-    magnetox := StrToFloat(datalist[7], FormatSettings);
-    magnetoy := StrToFloat(datalist[8], FormatSettings);
-    magnetoz := StrToFloat(datalist[9], FormatSettings);
-    air := StrToFloat(datalist[10], FormatSettings);
-    temp := StrToFloat(datalist[11], FormatSettings);
+    currentnumber := StrToInt(datalist[0]);
+    SetLength(meval, currentnumber + 1);
+    meval[currentnumber].number := currentnumber;
+    meval[currentnumber].accx := StrToFloat(datalist[1], FormatSettings);
+    meval[currentnumber].accy := StrToFloat(datalist[2], FormatSettings);
+    meval[currentnumber].accz := StrToFloat(datalist[3], FormatSettings);
+    meval[currentnumber].gyrox := StrToFloat(datalist[4], FormatSettings);
+    meval[currentnumber].gyroy := StrToFloat(datalist[5], FormatSettings);
+    meval[currentnumber].gyroz := StrToFloat(datalist[6], FormatSettings);
+    meval[currentnumber].magnetox := StrToFloat(datalist[7], FormatSettings);
+    meval[currentnumber].magnetoy := StrToFloat(datalist[8], FormatSettings);
+    meval[currentnumber].magnetoz := StrToFloat(datalist[9], FormatSettings);
+    meval[currentnumber].air := StrToFloat(datalist[10], FormatSettings);
+    meval[currentnumber].temp := StrToFloat(datalist[11], FormatSettings);
   end;
 
   tDataRead.Enabled := false;
@@ -212,10 +252,10 @@ begin
     if serial.InstanceActive then
     begin
       COMBox.Enabled := false;
-      bStart.Enabled := true;
       bOn.Enabled := true;
       bOff.Enabled := true;
       mSensor.Enabled := true;
+      tDataRead.Enabled := true;
 
       bConnect.Caption := 'Trennen';
 
@@ -231,11 +271,10 @@ begin
     serial.CloseSocket;
 
     COMBox.Enabled := true;
-    bStart.Enabled := false;
-    bStop.Enabled := false;
     bOn.Enabled := false;
     bOff.Enabled := false;
     mSensor.Enabled := false;
+    tDataRead.Enabled := false;
 
     bConnect.Caption := 'Verbinden mit';
 
@@ -270,22 +309,6 @@ begin
     end;
     COMBox.Text := ports[0];
   end;
-end;
-
-procedure TMEMS.bStartClick(Sender: TObject);
-begin
-  tDataRead.Enabled := true;
-
-  bStart.Enabled := false;
-  bStop.Enabled := true;
-end;
-
-procedure TMEMS.bStopClick(Sender: TObject);
-begin
-  tDataRead.Enabled := false;
-
-  bStart.Enabled := true;
-  bStop.Enabled := false;
 end;
 
 end.

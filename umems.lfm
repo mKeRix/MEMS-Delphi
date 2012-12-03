@@ -1,10 +1,10 @@
 object MEMS: TMEMS
   Left = 296
-  Height = 426
+  Height = 385
   Top = 126
   Width = 275
   Caption = 'MEMS'
-  ClientHeight = 406
+  ClientHeight = 365
   ClientWidth = 275
   Menu = MainMenu
   OnCreate = FormCreate
@@ -19,17 +19,6 @@ object MEMS: TMEMS
     TabOrder = 0
     TabStop = False
   end
-  object bStart: TButton
-    Left = 16
-    Height = 25
-    Top = 335
-    Width = 112
-    Caption = 'Start'
-    Enabled = False
-    OnClick = bStartClick
-    TabOrder = 4
-    TabStop = False
-  end
   object lD1: TLabel
     Left = 128
     Height = 16
@@ -39,17 +28,6 @@ object MEMS: TMEMS
     Caption = '0'
     ParentColor = False
     WordWrap = True
-  end
-  object bStop: TButton
-    Left = 144
-    Height = 25
-    Top = 335
-    Width = 116
-    Caption = 'Stop'
-    Enabled = False
-    OnClick = bStopClick
-    TabOrder = 3
-    TabStop = False
   end
   object lD2: TLabel
     Left = 128
@@ -260,9 +238,9 @@ object MEMS: TMEMS
   object bOn: TButton
     Left = 16
     Height = 25
-    Top = 368
+    Top = 328
     Width = 112
-    Caption = 'An'
+    Caption = 'Ein'
     Enabled = False
     OnClick = bOnClick
     TabOrder = 2
@@ -271,7 +249,7 @@ object MEMS: TMEMS
   object bOff: TButton
     Left = 144
     Height = 25
-    Top = 368
+    Top = 328
     Width = 116
     Caption = 'Aus'
     Enabled = False
@@ -288,7 +266,7 @@ object MEMS: TMEMS
     Items.Strings = (
       ''
     )
-    TabOrder = 5
+    TabOrder = 3
   end
   object bRefresh: TBitBtn
     Left = 237
@@ -333,7 +311,7 @@ object MEMS: TMEMS
     }
     OnClick = bRefreshClick
     Spacing = 0
-    TabOrder = 6
+    TabOrder = 4
   end
   object tDataRead: TTimer
     Enabled = False
@@ -349,9 +327,11 @@ object MEMS: TMEMS
       Caption = 'Datei'
       object mSave: TMenuItem
         Caption = 'Speichern'
+        OnClick = mSaveClick
       end
       object mOpen: TMenuItem
         Caption = 'Öffnen'
+        OnClick = mOpenClick
       end
     end
     object mSensor: TMenuItem
@@ -362,5 +342,9 @@ object MEMS: TMEMS
         OnClick = mSettingsClick
       end
     end
+  end
+  object Save: TSaveDialog
+    left = 247
+    top = 72
   end
 end
