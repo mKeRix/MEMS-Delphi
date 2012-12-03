@@ -43,6 +43,8 @@ type
     lD7: TLabel;
     lD8: TLabel;
     MainMenu: TMainMenu;
+    mClose: TMenuItem;
+    mSeperator1: TMenuItem;
     mFile: TMenuItem;
     mSensor: TMenuItem;
     mSettings: TMenuItem;
@@ -55,6 +57,7 @@ type
     procedure bOnClick(Sender: TObject);
     procedure bRefreshClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure mCloseClick(Sender: TObject);
     procedure mOpenClick(Sender: TObject);
     procedure mSaveClick(Sender: TObject);
     procedure mSettingsClick(Sender: TObject);
@@ -153,6 +156,11 @@ begin
     end;
     COMBox.Text := ports[0];
   end;
+end;
+
+procedure TMEMS.mCloseClick(Sender: TObject);
+begin
+  close
 end;
 
 procedure TMEMS.mOpenClick(Sender: TObject);

@@ -13,6 +13,7 @@ uses
 {$R *.res}
 
 begin
+  Application.Title:='MEMS';
   RequireDerivedFormResource := True;
   Application.Initialize;
   Application.CreateForm(TMEMS, MEMS);

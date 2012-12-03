@@ -327,11 +327,21 @@ object MEMS: TMEMS
       Caption = 'Datei'
       object mSave: TMenuItem
         Caption = 'Speichern'
+        ShortCut = 16467
         OnClick = mSaveClick
       end
       object mOpen: TMenuItem
         Caption = 'Öffnen'
+        ShortCut = 16463
         OnClick = mOpenClick
+      end
+      object mSeperator1: TMenuItem
+        Caption = '-'
+      end
+      object mClose: TMenuItem
+        Caption = 'Beenden'
+        ShortCut = 32883
+        OnClick = mCloseClick
       end
     end
     object mSensor: TMenuItem

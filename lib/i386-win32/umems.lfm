@@ -315,7 +315,7 @@ object MEMS: TMEMS
   end
   object tDataRead: TTimer
     Enabled = False
-    Interval = 90
+    Interval = 100
     OnTimer = tDataReadTimer
     left = 256
     top = 65512
@@ -331,6 +331,7 @@ object MEMS: TMEMS
       end
       object mOpen: TMenuItem
         Caption = 'Öffnen'
+        OnClick = mOpenClick
       end
     end
     object mSensor: TMenuItem
