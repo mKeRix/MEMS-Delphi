@@ -345,6 +345,8 @@ object MEMS: TMEMS
     end
   end
   object Save: TSaveDialog
+    DefaultExt = '.csv'
+    Filter = 'Werteliste|*.csv'
     left = 247
     top = 72
   end
