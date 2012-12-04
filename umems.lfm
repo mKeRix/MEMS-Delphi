@@ -1,10 +1,10 @@
 object MEMS: TMEMS
   Left = 296
-  Height = 385
+  Height = 351
   Top = 126
   Width = 275
   Caption = 'MEMS'
-  ClientHeight = 365
+  ClientHeight = 331
   ClientWidth = 275
   Menu = MainMenu
   OnCreate = FormCreate
@@ -235,28 +235,6 @@ object MEMS: TMEMS
     Caption = 'Nummer'
     ParentColor = False
   end
-  object bOn: TButton
-    Left = 16
-    Height = 25
-    Top = 328
-    Width = 112
-    Caption = 'Ein'
-    Enabled = False
-    OnClick = bOnClick
-    TabOrder = 2
-    TabStop = False
-  end
-  object bOff: TButton
-    Left = 144
-    Height = 25
-    Top = 328
-    Width = 116
-    Caption = 'Aus'
-    Enabled = False
-    OnClick = bOffClick
-    TabOrder = 1
-    TabStop = False
-  end
   object COMBox: TComboBox
     Left = 144
     Height = 23
@@ -266,7 +244,7 @@ object MEMS: TMEMS
     Items.Strings = (
       ''
     )
-    TabOrder = 3
+    TabOrder = 1
   end
   object bRefresh: TBitBtn
     Left = 237
@@ -311,7 +289,7 @@ object MEMS: TMEMS
     }
     OnClick = bRefreshClick
     Spacing = 0
-    TabOrder = 4
+    TabOrder = 2
   end
   object tDataRead: TTimer
     Enabled = False
@@ -347,6 +325,19 @@ object MEMS: TMEMS
     object mSensor: TMenuItem
       Caption = 'Sensor'
       Enabled = False
+      object mControls: TMenuItem
+        Caption = 'Steuerung'
+        object mOn: TMenuItem
+          Caption = 'Ein'
+          ShortCut = 16453
+          OnClick = mOnClick
+        end
+        object mOff: TMenuItem
+          Caption = 'Aus'
+          ShortCut = 16449
+          OnClick = mOffClick
+        end
+      end
       object mSettings: TMenuItem
         Caption = 'Einstellungen'
         OnClick = mSettingsClick

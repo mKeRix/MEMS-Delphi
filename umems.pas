@@ -15,8 +15,6 @@ type
   TMEMS = class(TForm)
     bConnect: TButton;
     bRefresh: TBitBtn;
-    bOn: TButton;
-    bOff: TButton;
     COMBox: TComboBox;
     Label1: TLabel;
     Label9: TLabel;
@@ -44,6 +42,9 @@ type
     lD8: TLabel;
     MainMenu: TMainMenu;
     mClose: TMenuItem;
+    mOff: TMenuItem;
+    mOn: TMenuItem;
+    mControls: TMenuItem;
     mSeperator1: TMenuItem;
     mFile: TMenuItem;
     mSensor: TMenuItem;
@@ -53,11 +54,11 @@ type
     Save: TSaveDialog;
     tDataRead: TTimer;
     procedure bConnectClick(Sender: TObject);
-    procedure bOffClick(Sender: TObject);
-    procedure bOnClick(Sender: TObject);
     procedure bRefreshClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure mCloseClick(Sender: TObject);
+    procedure mOffClick(Sender: TObject);
+    procedure mOnClick(Sender: TObject);
     procedure mOpenClick(Sender: TObject);
     procedure mSaveClick(Sender: TObject);
     procedure mSettingsClick(Sender: TObject);
@@ -85,6 +86,7 @@ var
   serial: TBlockSerial;
   connected: Boolean;
   data: String;
+  frequency:Integer;
   datalist: TStringList;
   meval:measuredvalues;
   filename:String[120];
@@ -132,6 +134,25 @@ begin
   end;
 end;
 
+function StringReverse(S:String):String;
+var
+  i: Integer;
+begin
+  Result:='';
+  for i:=Length(S) downto 1 do
+  Begin
+    Result:=Result+Copy(S,i,1);
+  end;
+end;
+
+function LastPos(const SubStr: String; const S: String): Integer;
+begin
+   result := Pos(StringReverse(SubStr), StringReverse(S)) ;
+
+   if (result <> 0) then
+     result := ((Length(S) - Length(SubStr)) + 1) - result + 1;
+end;
+
 procedure TMEMS.FormCreate(Sender: TObject);
 var
   i: Integer;
@@ -141,6 +162,7 @@ begin
   datalist := TStringList.Create;
 
   connected := false;
+  frequency := tDataRead.Interval;
 
   FormatSettings.DecimalSeparator := '.';
 
@@ -161,6 +183,16 @@ end;
 procedure TMEMS.mCloseClick(Sender: TObject);
 begin
   close
+end;
+
+procedure TMEMS.mOffClick(Sender: TObject);
+begin
+  serial.SendString('stop'+Char(13));
+end;
+
+procedure TMEMS.mOnClick(Sender: TObject);
+begin
+  serial.SendString('start'+Char(13));
 end;
 
 procedure TMEMS.mOpenClick(Sender: TObject);
@@ -206,43 +238,50 @@ end;
 
 procedure TMEMS.tDataReadTimer(Sender: TObject);
 var
-  currentnumber: Integer;
+  currentnumber,dataamount,i: Integer;
+  data: String;
 begin
-  //read data every 100ms
   data := serial.RecvPacket(10);
-  data := Copy(data, 1, Pos(Char(13), data) -1);
+  data := Copy(data, 1, LastPos(Char(13), data) -1);
   datalist := Split(data,';');
+  dataamount := datalist.Count div 12;
 
-  if datalist.Count > 11 then
+  if datalist.Count mod 12 = 0 then
   begin
-    lD0.Caption := datalist[0];
-    lD1.Caption := datalist[1];
-    lD2.Caption := datalist[2];
-    lD3.Caption := datalist[3];
-    lD4.Caption := datalist[4];
-    lD5.Caption := datalist[5];
-    lD6.Caption := datalist[6];
-    lD7.Caption := datalist[7];
-    lD8.Caption := datalist[8];
-    lD9.Caption := datalist[9];
-    lD10.Caption := datalist[10];
-    lD11.Caption := datalist[11];
+    for i:=0 to dataamount-1 do
+    begin
+      datalist[0+i*12] := StringReplace(datalist[0+i*12], Char(13)+Char(10), '', [rfReplaceAll]);
+      //datalist[0+i*12] := Copy(datalist[0+i*12], Pos(Char(13), datalist[0+i*12]), Length(datalist[0+i*12]));
 
-    //really early version of saving the data as float variables for later calculations - see Github
-    currentnumber := StrToInt(datalist[0]);
-    SetLength(meval, currentnumber + 1);
-    meval[currentnumber].number := currentnumber;
-    meval[currentnumber].accx := StrToFloat(datalist[1], FormatSettings);
-    meval[currentnumber].accy := StrToFloat(datalist[2], FormatSettings);
-    meval[currentnumber].accz := StrToFloat(datalist[3], FormatSettings);
-    meval[currentnumber].gyrox := StrToFloat(datalist[4], FormatSettings);
-    meval[currentnumber].gyroy := StrToFloat(datalist[5], FormatSettings);
-    meval[currentnumber].gyroz := StrToFloat(datalist[6], FormatSettings);
-    meval[currentnumber].magnetox := StrToFloat(datalist[7], FormatSettings);
-    meval[currentnumber].magnetoy := StrToFloat(datalist[8], FormatSettings);
-    meval[currentnumber].magnetoz := StrToFloat(datalist[9], FormatSettings);
-    meval[currentnumber].air := StrToFloat(datalist[10], FormatSettings);
-    meval[currentnumber].temp := StrToFloat(datalist[11], FormatSettings);
+      lD0.Caption := datalist[0+i*12];
+      lD1.Caption := datalist[1+i*12];
+      lD2.Caption := datalist[2+i*12];
+      lD3.Caption := datalist[3+i*12];
+      lD4.Caption := datalist[4+i*12];
+      lD5.Caption := datalist[5+i*12];
+      lD6.Caption := datalist[6+i*12];
+      lD7.Caption := datalist[7+i*12];
+      lD8.Caption := datalist[8+i*12];
+      lD9.Caption := datalist[9+i*12];
+      lD10.Caption := datalist[10+i*12];
+      lD11.Caption := datalist[11+i*12];
+
+      //saving data into the dataset array
+      currentnumber := StrToInt(datalist[0+i*12]);
+      SetLength(meval, currentnumber + 1);
+      meval[currentnumber].number := currentnumber;
+      meval[currentnumber].accx := StrToFloat(datalist[1+i*12], FormatSettings);
+      meval[currentnumber].accy := StrToFloat(datalist[2+i*12], FormatSettings);
+      meval[currentnumber].accz := StrToFloat(datalist[3+i*12], FormatSettings);
+      meval[currentnumber].gyrox := StrToFloat(datalist[4+i*12], FormatSettings);
+      meval[currentnumber].gyroy := StrToFloat(datalist[5+i*12], FormatSettings);
+      meval[currentnumber].gyroz := StrToFloat(datalist[6+i*12], FormatSettings);
+      meval[currentnumber].magnetox := StrToFloat(datalist[7+i*12], FormatSettings);
+      meval[currentnumber].magnetoy := StrToFloat(datalist[8+i*12], FormatSettings);
+      meval[currentnumber].magnetoz := StrToFloat(datalist[9+i*12], FormatSettings);
+      meval[currentnumber].air := StrToFloat(datalist[10+i*12], FormatSettings);
+      meval[currentnumber].temp := StrToFloat(datalist[11+i*12], FormatSettings);
+    end;
   end;
 
   tDataRead.Enabled := false;
@@ -255,13 +294,14 @@ begin
   begin
     //connect via synaser
     serial.Connect(COMBox.Text);
-    serial.config(115200, 8, 'N', SB1, False, False);
+    serial.config(115200, 16, 'N', SB1, False, False);
 
     if serial.InstanceActive then
     begin
+      //reset settings on start (until settings can be read by the program)
+      serial.SendString('default'+Char(13));
+
       COMBox.Enabled := false;
-      bOn.Enabled := true;
-      bOff.Enabled := true;
       mSensor.Enabled := true;
       tDataRead.Enabled := true;
 
@@ -279,8 +319,6 @@ begin
     serial.CloseSocket;
 
     COMBox.Enabled := true;
-    bOn.Enabled := false;
-    bOff.Enabled := false;
     mSensor.Enabled := false;
     tDataRead.Enabled := false;
 
@@ -290,15 +328,6 @@ begin
   end;
 end;
 
-procedure TMEMS.bOffClick(Sender: TObject);
-begin
-  serial.SendString('stop'+Char(13));
-end;
-
-procedure TMEMS.bOnClick(Sender: TObject);
-begin
-  serial.SendString('start'+Char(13));
-end;
 
 procedure TMEMS.bRefreshClick(Sender: TObject);
 var
