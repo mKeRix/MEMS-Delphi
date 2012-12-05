@@ -350,4 +350,10 @@ object MEMS: TMEMS
     left = 247
     top = 72
   end
+  object Open: TOpenDialog
+    DefaultExt = '.csv'
+    Filter = 'Werteliste|*.csv'
+    left = 248
+    top = 128
+  end
 end

@@ -51,6 +51,7 @@ type
     mSettings: TMenuItem;
     mSave: TMenuItem;
     mOpen: TMenuItem;
+    Open: TOpenDialog;
     Save: TSaveDialog;
     tDataRead: TTimer;
     procedure bConnectClick(Sender: TObject);
@@ -206,8 +207,42 @@ begin
 end;
 
 procedure TMEMS.mOpenClick(Sender: TObject);
+var
+  valuefile: Text;
+  line: String;
+  i: Integer;
 begin
-  //to be implemented
+  Open.InitialDir:='';
+  if(Open.Execute)
+  then
+  begin
+    filename:=Open.FileName;
+    i := 0;
+    AssignFile(valuefile, Open.FileName);
+    Reset(valuefile);
+    while not eof(valuefile) do
+    begin
+      ReadLn(valuefile, line);
+      datalist := Split(line,';');
+      SetLength(meval, i+1);
+
+      meval[i].number := StrToInt(datalist[0]);
+      meval[i].accx := StrToFloat(datalist[1]);
+      meval[i].accy := StrToFloat(datalist[2]);
+      meval[i].accz := StrToFloat(datalist[3]);
+      meval[i].gyrox := StrToFloat(datalist[4]);
+      meval[i].gyroy := StrToFloat(datalist[5]);
+      meval[i].gyroz := StrToFloat(datalist[6]);
+      meval[i].magnetox := StrToFloat(datalist[7]);
+      meval[i].magnetoy := StrToFloat(datalist[8]);
+      meval[i].magnetoz := StrToFloat(datalist[9]);
+      meval[i].air := StrToFloat(datalist[10]);
+      meval[i].temp := StrToFloat(datalist[11]);
+
+      inc(i);
+    end;
+    CloseFile(valuefile);
+  end;
 end;
 
 procedure TMEMS.mSaveClick(Sender: TObject);
