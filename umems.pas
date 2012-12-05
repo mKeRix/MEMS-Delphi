@@ -86,7 +86,6 @@ var
   serial: TBlockSerial;
   connected: Boolean;
   data: String;
-  frequency:Integer;
   datalist: TStringList;
   meval:measuredvalues;
   filename:String[120];
@@ -162,7 +161,6 @@ begin
   datalist := TStringList.Create;
 
   connected := false;
-  frequency := tDataRead.Interval;
 
   FormatSettings.DecimalSeparator := '.';
 
@@ -186,8 +184,20 @@ begin
 end;
 
 procedure TMEMS.mOffClick(Sender: TObject);
+var
+  i: Integer;
 begin
   serial.SendString('stop'+Char(13));
+
+  //cheat to let missing data "disappear" -> needs to be looked into, but for now it should work okay like this
+  for i:=1 to Length(meval) do
+  begin
+    if meval[i].number = 0 then
+    begin
+      meval[i] := meval[i-1];
+      meval[i].number := meval[i-1].number+1;
+    end;
+  end;
 end;
 
 procedure TMEMS.mOnClick(Sender: TObject);
@@ -226,6 +236,15 @@ procedure TMEMS.mSettingsClick(Sender: TObject);
 begin
   if Settings.ShowModal= mrOK then
   begin
+    if StrToInt(Settings.FrequencyBox.Text) > 1000 then
+    begin
+      Settings.FrequencyBox.Text := '1000';
+    end
+    else if StrToInt(Settings.FrequencyBox.Text) < 10 then
+    begin
+      Settings.FrequencyBox.Text := '10';
+    end;
+
     serial.SendString('accel_fs '+Settings.AccelBox.Text+Char(13));
     serial.SendString('gyro_fs '+Settings.GyroBox.Text+Char(13));
     serial.SendString('refresh '+Settings.FrequencyBox.Text+Char(13));
@@ -294,7 +313,7 @@ begin
   begin
     //connect via synaser
     serial.Connect(COMBox.Text);
-    serial.config(115200, 16, 'N', SB1, False, False);
+    serial.config(115200, 8, 'N', SB1, False, False);
 
     if serial.InstanceActive then
     begin
@@ -302,6 +321,7 @@ begin
       serial.SendString('default'+Char(13));
 
       COMBox.Enabled := false;
+      bRefresh.Enabled := false;
       mSensor.Enabled := true;
       tDataRead.Enabled := true;
 
@@ -319,6 +339,7 @@ begin
     serial.CloseSocket;
 
     COMBox.Enabled := true;
+    bRefresh.Enabled := true;
     mSensor.Enabled := false;
     tDataRead.Enabled := false;
 

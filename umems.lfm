@@ -1,10 +1,10 @@
 object MEMS: TMEMS
   Left = 296
-  Height = 351
+  Height = 349
   Top = 126
   Width = 275
   Caption = 'MEMS'
-  ClientHeight = 331
+  ClientHeight = 329
   ClientWidth = 275
   Menu = MainMenu
   OnCreate = FormCreate
