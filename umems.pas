@@ -281,8 +281,11 @@ begin
     end;
 
     serial.SendString('accel_fs '+Settings.AccelBox.Text+Char(13));
+    Sleep(33);
     serial.SendString('gyro_fs '+Settings.GyroBox.Text+Char(13));
+    Sleep(33);
     serial.SendString('refresh '+Settings.FrequencyBox.Text+Char(13));
+    Sleep(33);
 
     tDataRead.Enabled := false;
     tDataRead.Interval := 1000 * 1 div StrToInt(Settings.FrequencyBox.Text);
