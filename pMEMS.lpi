@@ -38,7 +38,7 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="3">
+    <Units Count="4">
       <Unit0>
         <Filename Value="pMEMS.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -60,6 +60,14 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="usettings"/>
       </Unit2>
+      <Unit3>
+        <Filename Value="udiagram1.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Diagram1"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="udiagram1"/>
+      </Unit3>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ExtCtrls, Menus, Buttons, Synaser, usettings;
+  ExtCtrls, Menus, Buttons, Synaser, usettings, udiagram1;
 
 type
 
@@ -42,6 +42,8 @@ type
     lD8: TLabel;
     MainMenu: TMainMenu;
     mClose: TMenuItem;
+    mDiagram: TMenuItem;
+    mView: TMenuItem;
     mOff: TMenuItem;
     mOn: TMenuItem;
     mControls: TMenuItem;
@@ -58,6 +60,7 @@ type
     procedure bRefreshClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure mCloseClick(Sender: TObject);
+    procedure mDiagramClick(Sender: TObject);
     procedure mOffClick(Sender: TObject);
     procedure mOnClick(Sender: TObject);
     procedure mOpenClick(Sender: TObject);
@@ -90,6 +93,7 @@ var
   datalist: TStringList;
   meval:measuredvalues;
   filename:String[120];
+  frequency,accelmax,gyromax:Integer;
 
 {$R *.lfm}
 
@@ -182,6 +186,12 @@ end;
 procedure TMEMS.mCloseClick(Sender: TObject);
 begin
   close
+end;
+
+procedure TMEMS.mDiagramClick(Sender: TObject);
+begin
+  //Acceleration
+  Diagram1.Show;
 end;
 
 procedure TMEMS.mOffClick(Sender: TObject);
@@ -287,6 +297,13 @@ begin
     serial.SendString('refresh '+Settings.FrequencyBox.Text+Char(13));
     Sleep(33);
 
+    accelmax := StrToInt(Settings.AccelBox.Text);
+    gyromax := StrToInt(Settings.GyroBox.Text);
+    frequency := StrToInt(Settings.FrequencyBox.Text);
+
+    Diagram1.UpdateLimitsY(accelmax);
+    Diagram1.UpdateRange(frequency*10);
+
     tDataRead.Enabled := false;
     tDataRead.Interval := 1000 * 1 div StrToInt(Settings.FrequencyBox.Text);
     tDataRead.Enabled := true;
@@ -338,6 +355,11 @@ begin
       meval[currentnumber].magnetoz := StrToFloat(datalist[9+i*12], FormatSettings);
       meval[currentnumber].air := StrToFloat(datalist[10+i*12], FormatSettings);
       meval[currentnumber].temp := StrToFloat(datalist[11+i*12], FormatSettings);
+
+      Diagram1.diagramData.lists[0].addPoint(currentnumber,meval[currentnumber].accx);
+      Diagram1.diagramData.lists[1].addPoint(currentnumber,meval[currentnumber].accy);
+      Diagram1.diagramData.lists[2].addPoint(currentnumber,meval[currentnumber].accz);
+      Diagram1.UpdateLimitsX(currentnumber);
     end;
   end;
 
@@ -357,6 +379,11 @@ begin
     begin
       //reset settings on start (until settings can be read by the program)
       serial.SendString('default'+Char(13));
+      frequency := 10;
+      accelmax := 4;
+      gyromax := 2000;
+      Diagram1.UpdateLimitsY(accelmax);
+      Diagram1.UpdateRange(frequency);
 
       COMBox.Enabled := false;
       bRefresh.Enabled := false;

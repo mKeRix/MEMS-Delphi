@@ -3,6 +3,7 @@ object MEMS: TMEMS
   Height = 349
   Top = 126
   Width = 275
+  BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'MEMS'
   ClientHeight = 329
   ClientWidth = 275
@@ -341,6 +342,13 @@ object MEMS: TMEMS
       object mSettings: TMenuItem
         Caption = 'Einstellungen'
         OnClick = mSettingsClick
+      end
+    end
+    object mView: TMenuItem
+      Caption = 'Darstellung'
+      object mDiagram: TMenuItem
+        Caption = 'Diagramm'
+        OnClick = mDiagramClick
       end
     end
   end

@@ -1,0 +1,20 @@
+object Diagram1: TDiagram1
+  Left = 591
+  Height = 257
+  Top = 126
+  Width = 694
+  Caption = 'Diagramm (Beschleunigung)'
+  ClientHeight = 257
+  ClientWidth = 694
+  OnCreate = FormCreate
+  LCLVersion = '1.0.2.0'
+  object pDiagram: TPanel
+    Left = 0
+    Height = 257
+    Top = 0
+    Width = 694
+    Align = alClient
+    BevelOuter = bvNone
+    TabOrder = 0
+  end
+end
