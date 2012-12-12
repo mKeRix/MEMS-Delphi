@@ -348,7 +348,29 @@ object MEMS: TMEMS
       Caption = 'Darstellung'
       object mDiagram: TMenuItem
         Caption = 'Diagramm'
-        OnClick = mDiagramClick
+        object mDiagram1: TMenuItem
+          Caption = 'Beschleunigung'
+          OnClick = mDiagram1Click
+        end
+        object mDiagram2: TMenuItem
+          Caption = 'Gyroscope'
+          OnClick = mDiagram2Click
+        end
+        object mDiagram3: TMenuItem
+          Caption = 'Magnetfeld'
+          OnClick = mDiagram3Click
+        end
+        object mDiagram4: TMenuItem
+          Caption = 'Luftdruck'
+          OnClick = mDiagram4Click
+        end
+        object mDiagram5: TMenuItem
+          Caption = 'Temperatur'
+          OnClick = mDiagram5Click
+        end
+      end
+      object mDiagramSettings: TMenuItem
+        Caption = 'Einstellungen'
       end
     end
   end

@@ -6,7 +6,8 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ExtCtrls, Menus, Buttons, Synaser, usettings, udiagram1;
+  ExtCtrls, Menus, Buttons, Synaser, usettings, udiagram1, udiagram2, udiagram3,
+  udiagram4, udiagram5;
 
 type
 
@@ -43,6 +44,12 @@ type
     MainMenu: TMainMenu;
     mClose: TMenuItem;
     mDiagram: TMenuItem;
+    mDiagram1: TMenuItem;
+    mDiagram2: TMenuItem;
+    mDiagram3: TMenuItem;
+    mDiagram4: TMenuItem;
+    mDiagram5: TMenuItem;
+    mDiagramSettings: TMenuItem;
     mView: TMenuItem;
     mOff: TMenuItem;
     mOn: TMenuItem;
@@ -60,7 +67,12 @@ type
     procedure bRefreshClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure mCloseClick(Sender: TObject);
-    procedure mDiagramClick(Sender: TObject);
+    procedure mDiagram1Click(Sender: TObject);
+    procedure mDiagram2Click(Sender: TObject);
+    procedure mDiagram3Click(Sender: TObject);
+    procedure mDiagram4Click(Sender: TObject);
+    procedure mDiagram5Click(Sender: TObject);
+    procedure mDiagramSettingsClick(Sender: TObject);
     procedure mOffClick(Sender: TObject);
     procedure mOnClick(Sender: TObject);
     procedure mOpenClick(Sender: TObject);
@@ -188,10 +200,39 @@ begin
   close
 end;
 
-procedure TMEMS.mDiagramClick(Sender: TObject);
+procedure TMEMS.mDiagram1Click(Sender: TObject);
 begin
   //Acceleration
   Diagram1.Show;
+end;
+
+procedure TMEMS.mDiagram2Click(Sender: TObject);
+begin
+  //Gyroscope
+  Diagram2.Show;
+end;
+
+procedure TMEMS.mDiagram3Click(Sender: TObject);
+begin
+  //Magneto
+  Diagram3.Show;
+end;
+
+procedure TMEMS.mDiagram4Click(Sender: TObject);
+begin
+  //air pressure
+  Diagram4.Show;
+end;
+
+procedure TMEMS.mDiagram5Click(Sender: TObject);
+begin
+  //temprature
+  Diagram5.Show;
+end;
+
+procedure TMEMS.mDiagramSettingsClick(Sender: TObject);
+begin
+  //to be added
 end;
 
 procedure TMEMS.mOffClick(Sender: TObject);
@@ -303,6 +344,11 @@ begin
 
     Diagram1.UpdateLimitsY(accelmax);
     Diagram1.UpdateRange(frequency*10);
+    Diagram2.UpdateLimitsY(gyromax);
+    Diagram2.UpdateRange(frequency*10);
+    Diagram3.UpdateRange(frequency*10);
+    Diagram4.UpdateRange(frequency*10);
+    Diagram5.UpdateRange(frequency*10);
 
     tDataRead.Enabled := false;
     tDataRead.Interval := 1000 * 1 div StrToInt(Settings.FrequencyBox.Text);
@@ -327,6 +373,7 @@ begin
       datalist[0+i*12] := StringReplace(datalist[0+i*12], Char(13)+Char(10), '', [rfReplaceAll]);
       //datalist[0+i*12] := Copy(datalist[0+i*12], Pos(Char(13), datalist[0+i*12]), Length(datalist[0+i*12]));
 
+      //output data in the form
       lD0.Caption := datalist[0+i*12];
       lD1.Caption := datalist[1+i*12];
       lD2.Caption := datalist[2+i*12];
@@ -356,10 +403,39 @@ begin
       meval[currentnumber].air := StrToFloat(datalist[10+i*12], FormatSettings);
       meval[currentnumber].temp := StrToFloat(datalist[11+i*12], FormatSettings);
 
+      //clear diagrams if needed
+      if Diagram1.diagramData.lists[0].count > currentnumber then
+      begin
+        Diagram1.diagramData.lists[0].clear;
+        Diagram1.diagramData.lists[1].clear;
+        Diagram1.diagramData.lists[2].clear;
+        Diagram2.diagramData.lists[0].clear;
+        Diagram2.diagramData.lists[1].clear;
+        Diagram2.diagramData.lists[2].clear;
+        Diagram3.diagramData.lists[0].clear;
+        Diagram3.diagramData.lists[1].clear;
+        Diagram3.diagramData.lists[2].clear;
+        Diagram4.diagramData.lists[0].clear;
+        Diagram5.diagramData.lists[0].clear;
+      end;
+
+      //give data to the diagram handlers
       Diagram1.diagramData.lists[0].addPoint(currentnumber,meval[currentnumber].accx);
       Diagram1.diagramData.lists[1].addPoint(currentnumber,meval[currentnumber].accy);
       Diagram1.diagramData.lists[2].addPoint(currentnumber,meval[currentnumber].accz);
       Diagram1.UpdateLimitsX(currentnumber);
+      Diagram2.diagramData.lists[0].addPoint(currentnumber,meval[currentnumber].gyrox);
+      Diagram2.diagramData.lists[1].addPoint(currentnumber,meval[currentnumber].gyroy);
+      Diagram2.diagramData.lists[2].addPoint(currentnumber,meval[currentnumber].gyroz);
+      Diagram2.UpdateLimitsX(currentnumber);
+      Diagram3.diagramData.lists[0].addPoint(currentnumber,meval[currentnumber].magnetox);
+      Diagram3.diagramData.lists[1].addPoint(currentnumber,meval[currentnumber].magnetoy);
+      Diagram3.diagramData.lists[2].addPoint(currentnumber,meval[currentnumber].magnetoz);
+      Diagram3.UpdateLimitsX(currentnumber);
+      Diagram4.diagramData.lists[0].addPoint(currentnumber,meval[currentnumber].air);
+      Diagram4.UpdateLimitsX(currentnumber);
+      Diagram5.diagramData.lists[0].addPoint(currentnumber,meval[currentnumber].temp);
+      Diagram5.UpdateLimitsX(currentnumber);
     end;
   end;
 
@@ -383,7 +459,12 @@ begin
       accelmax := 4;
       gyromax := 2000;
       Diagram1.UpdateLimitsY(accelmax);
-      Diagram1.UpdateRange(frequency);
+      Diagram1.UpdateRange(frequency*10);
+      Diagram2.UpdateLimitsY(gyromax);
+      Diagram2.UpdateRange(frequency*10);
+      Diagram3.UpdateRange(frequency*10);
+      Diagram4.UpdateRange(frequency*10);
+      Diagram5.UpdateRange(frequency*10);
 
       COMBox.Enabled := false;
       bRefresh.Enabled := false;

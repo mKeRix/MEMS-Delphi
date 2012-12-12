@@ -1,16 +1,16 @@
-object Diagram1: TDiagram1
-  Left = 588
-  Height = 410
+object Diagram5: TDiagram5
+  Left = 589
+  Height = 383
   Top = 124
   Width = 700
-  Caption = 'Diagramm (Beschleunigung)'
-  ClientHeight = 410
+  Caption = 'Diagramm (Temperatur)'
+  ClientHeight = 383
   ClientWidth = 700
   OnCreate = FormCreate
   LCLVersion = '1.0.2.0'
   object pDiagram: TPanel
     Left = 10
-    Height = 390
+    Height = 363
     Top = 10
     Width = 680
     Align = alClient

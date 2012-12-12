@@ -1,4 +1,4 @@
-unit udiagram1;
+unit udiagram3;
 
 {$mode objfpc}{$H+}
 
@@ -9,9 +9,9 @@ uses
 
 type
 
-  { TDiagram1 }
+  { TDiagram3 }
 
-  TDiagram1 = class(TForm)
+  TDiagram3 = class(TForm)
     pDiagram: TPanel;
     procedure FormCreate(Sender: TObject);
     procedure UpdateLimitsY(ydiagrammax: Integer);
@@ -26,18 +26,16 @@ type
   end;
 
 var
-  Diagram1: TDiagram1;
+  Diagram3: TDiagram3;
 
 implementation
 
 var
   range: Integer;
 
-{$R *.lfm}
+{ TDiagram3 }
 
-{ TDiagram1 }
-
-procedure TDiagram1.FormCreate(Sender: TObject);
+procedure TDiagram3.FormCreate(Sender: TObject);
 begin
   diagramData := TDiagramDataListModel.create;
   diagramView := TDiagramView.create(pDiagram);
@@ -54,8 +52,8 @@ begin
   diagramView.Drawer.RightAxis.Visible := true;
   diagramView.Drawer.RightAxis.gridLinePen.Style := psSolid;
   diagramView.Drawer.RightAxis.gridLinePen.Color := clGray;
-  diagramView.Drawer.RangeMaxY := 4;
-  diagramView.Drawer.RangeMinY := -4;
+  diagramView.Drawer.RangeMaxY := 1500;
+  diagramView.Drawer.RangeMinY := -1500;
 
   diagramData.setDataRows(3);
   diagramData.lists[0].Title := 'X Achse';
@@ -63,18 +61,18 @@ begin
   diagramData.lists[2].Title := 'Z Achse';
 end;
 
-procedure TDiagram1.UpdateLimitsY(ydiagrammax: Integer);
+procedure TDiagram3.UpdateLimitsY(ydiagrammax: Integer);
 begin
   diagramView.Drawer.RangeMaxY := ydiagrammax;
   diagramView.Drawer.RangeMinY := -ydiagrammax;
 end;
 
-procedure TDiagram1.UpdateRange(maxrange: Integer);
+procedure TDiagram3.UpdateRange(maxrange: Integer);
 begin
   range := maxrange;
 end;
 
-procedure TDiagram1.UpdateLimitsX(currentx: Integer);
+procedure TDiagram3.UpdateLimitsX(currentx: Integer);
 begin
   if currentx < range then
   begin
@@ -87,6 +85,8 @@ begin
     diagramView.Drawer.RangeMinX := currentx - range;;
   end;
 end;
+
+{$R *.lfm}
 
 end.
 

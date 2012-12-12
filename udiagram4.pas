@@ -1,4 +1,4 @@
-unit udiagram1;
+unit udiagram4;
 
 {$mode objfpc}{$H+}
 
@@ -9,9 +9,9 @@ uses
 
 type
 
-  { TDiagram1 }
+  { TDiagram4 }
 
-  TDiagram1 = class(TForm)
+  TDiagram4 = class(TForm)
     pDiagram: TPanel;
     procedure FormCreate(Sender: TObject);
     procedure UpdateLimitsY(ydiagrammax: Integer);
@@ -26,7 +26,7 @@ type
   end;
 
 var
-  Diagram1: TDiagram1;
+  Diagram4: TDiagram4;
 
 implementation
 
@@ -35,9 +35,9 @@ var
 
 {$R *.lfm}
 
-{ TDiagram1 }
+{ TDiagram4 }
 
-procedure TDiagram1.FormCreate(Sender: TObject);
+procedure TDiagram4.FormCreate(Sender: TObject);
 begin
   diagramData := TDiagramDataListModel.create;
   diagramView := TDiagramView.create(pDiagram);
@@ -48,33 +48,29 @@ begin
   diagramView.Drawer.FillStyle := fsNone;
   diagramView.Drawer.AutoSetRangeX := false;
   diagramView.Drawer.AutoSetRangeY := false;
-  diagramView.Drawer.BottomAxis.Visible := false;
   diagramView.Drawer.LeftAxis.Visible := false;
-  diagramView.Drawer.HorzMidAxis.Visible := true;
   diagramView.Drawer.RightAxis.Visible := true;
   diagramView.Drawer.RightAxis.gridLinePen.Style := psSolid;
   diagramView.Drawer.RightAxis.gridLinePen.Color := clGray;
-  diagramView.Drawer.RangeMaxY := 4;
-  diagramView.Drawer.RangeMinY := -4;
+  diagramView.Drawer.RangeMaxY := 1200;
+  diagramView.Drawer.RangeMinY := 800;
+  diagramView.Drawer.legend.visible := false;
 
-  diagramData.setDataRows(3);
-  diagramData.lists[0].Title := 'X Achse';
-  diagramData.lists[1].Title := 'Y Achse';
-  diagramData.lists[2].Title := 'Z Achse';
+  diagramData.setDataRows(1);
 end;
 
-procedure TDiagram1.UpdateLimitsY(ydiagrammax: Integer);
+procedure TDiagram4.UpdateLimitsY(ydiagrammax: Integer);
 begin
-  diagramView.Drawer.RangeMaxY := ydiagrammax;
-  diagramView.Drawer.RangeMinY := -ydiagrammax;
+  diagramView.Drawer.RangeMaxY := 1000+ydiagrammax;
+  diagramView.Drawer.RangeMinY := 1000-ydiagrammax;
 end;
 
-procedure TDiagram1.UpdateRange(maxrange: Integer);
+procedure TDiagram4.UpdateRange(maxrange: Integer);
 begin
   range := maxrange;
 end;
 
-procedure TDiagram1.UpdateLimitsX(currentx: Integer);
+procedure TDiagram4.UpdateLimitsX(currentx: Integer);
 begin
   if currentx < range then
   begin
