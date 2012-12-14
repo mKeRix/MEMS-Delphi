@@ -273,6 +273,8 @@ begin
     Reset(valuefile);
     while not eof(valuefile) do
     begin
+      inc(i);
+
       ReadLn(valuefile, line);
       datalist := Split(line,';');
       SetLength(meval, i+1);
@@ -289,8 +291,6 @@ begin
       meval[i].magnetoz := StrToFloat(datalist[9]);
       meval[i].air := StrToFloat(datalist[10]);
       meval[i].temp := StrToFloat(datalist[11]);
-
-      inc(i);
     end;
     CloseFile(valuefile);
   end;
