@@ -255,6 +255,9 @@ end;
 procedure TMEMS.mOnClick(Sender: TObject);
 begin
   serial.SendString('start'+Char(13));
+
+  tDataRead.Enabled := false;
+  tDataRead.Enabled := true;
 end;
 
 procedure TMEMS.mOpenClick(Sender: TObject);
