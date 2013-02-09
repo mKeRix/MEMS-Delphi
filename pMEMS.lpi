@@ -38,7 +38,7 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="8">
+    <Units Count="10">
       <Unit0>
         <Filename Value="pMEMS.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -72,6 +72,7 @@
         <Filename Value="udiagram2.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="Diagram2"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="udiagram2"/>
       </Unit4>
@@ -79,6 +80,7 @@
         <Filename Value="udiagram3.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="Diagram3"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="udiagram3"/>
       </Unit5>
@@ -86,6 +88,7 @@
         <Filename Value="udiagram4.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="Diagram4"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="udiagram4"/>
       </Unit6>
@@ -93,9 +96,24 @@
         <Filename Value="udiagram5.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="Diagram5"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="udiagram5"/>
       </Unit7>
+      <Unit8>
+        <Filename Value="uextended.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="ExtendedMeasures"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uextended"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="udiagram6.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Diagram6"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="udiagram6"/>
+      </Unit9>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

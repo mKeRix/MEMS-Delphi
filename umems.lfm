@@ -346,6 +346,10 @@ object MEMS: TMEMS
     end
     object mView: TMenuItem
       Caption = 'Darstellung'
+      object mExtended: TMenuItem
+        Caption = 'Erweiterte Werte'
+        OnClick = mExtendedClick
+      end
       object mDiagram: TMenuItem
         Caption = 'Diagramm'
         object mDiagram1: TMenuItem
@@ -367,6 +371,13 @@ object MEMS: TMEMS
         object mDiagram5: TMenuItem
           Caption = 'Temperatur'
           OnClick = mDiagram5Click
+        end
+        object mExtendedDiagrams: TMenuItem
+          Caption = 'Erweitert'
+          object mExAccelDiagram: TMenuItem
+            Caption = 'Beschleuningung'
+            OnClick = mExAccelDiagramClick
+          end
         end
       end
       object mDiagramSettings: TMenuItem

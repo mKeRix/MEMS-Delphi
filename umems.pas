@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ExtCtrls, Menus, Buttons, Synaser, usettings, udiagram1, udiagram2, udiagram3,
-  udiagram4, udiagram5;
+  udiagram4, udiagram5, udiagram6, uextended;
 
 type
 
@@ -50,6 +50,9 @@ type
     mDiagram4: TMenuItem;
     mDiagram5: TMenuItem;
     mDiagramSettings: TMenuItem;
+    mExAccelDiagram: TMenuItem;
+    mExtendedDiagrams: TMenuItem;
+    mExtended: TMenuItem;
     mView: TMenuItem;
     mOff: TMenuItem;
     mOn: TMenuItem;
@@ -73,6 +76,8 @@ type
     procedure mDiagram4Click(Sender: TObject);
     procedure mDiagram5Click(Sender: TObject);
     procedure mDiagramSettingsClick(Sender: TObject);
+    procedure mExAccelDiagramClick(Sender: TObject);
+    procedure mExtendedClick(Sender: TObject);
     procedure mOffClick(Sender: TObject);
     procedure mOnClick(Sender: TObject);
     procedure mOpenClick(Sender: TObject);
@@ -226,13 +231,25 @@ end;
 
 procedure TMEMS.mDiagram5Click(Sender: TObject);
 begin
-  //temprature
+  //temperature
   Diagram5.Show;
 end;
 
 procedure TMEMS.mDiagramSettingsClick(Sender: TObject);
 begin
   //to be added
+end;
+
+procedure TMEMS.mExAccelDiagramClick(Sender: TObject);
+begin
+  //extended acceleration
+  Diagram6.Show;
+end;
+
+procedure TMEMS.mExtendedClick(Sender: TObject);
+begin
+  //extended values like acceleration
+  ExtendedMeasures.Show;
 end;
 
 procedure TMEMS.mOffClick(Sender: TObject);
@@ -352,6 +369,7 @@ begin
     Diagram3.UpdateRange(frequency*10);
     Diagram4.UpdateRange(frequency*10);
     Diagram5.UpdateRange(frequency*10);
+    Diagram6.UpdateRange(frequency*10);
 
     tDataRead.Enabled := false;
     tDataRead.Interval := 1000 * 1 div StrToInt(Settings.FrequencyBox.Text);
@@ -420,6 +438,7 @@ begin
         Diagram3.diagramData.lists[2].clear;
         Diagram4.diagramData.lists[0].clear;
         Diagram5.diagramData.lists[0].clear;
+        Diagram6.diagramData.lists[0].clear;
       end;
 
       //give data to the diagram handlers
@@ -439,6 +458,9 @@ begin
       Diagram4.UpdateLimitsX(currentnumber);
       Diagram5.diagramData.lists[0].addPoint(currentnumber,meval[currentnumber].temp);
       Diagram5.UpdateLimitsX(currentnumber);
+
+      //give data to extended measuring
+      ExtendedMeasures.Update(meval[currentnumber].accx,meval[currentnumber].accy,meval[currentnumber].accz,currentnumber);
     end;
   end;
 
@@ -468,6 +490,7 @@ begin
       Diagram3.UpdateRange(frequency*10);
       Diagram4.UpdateRange(frequency*10);
       Diagram5.UpdateRange(frequency*10);
+      Diagram6.UpdateRange(frequency*10);
 
       COMBox.Enabled := false;
       bRefresh.Enabled := false;

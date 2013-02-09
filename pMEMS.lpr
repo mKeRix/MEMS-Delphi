@@ -8,7 +8,7 @@ uses
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, uMEMS, laz_synapse, usettings, udiagram1, udiagram2, udiagram3, 
-udiagram4, udiagram5
+udiagram4, udiagram5, uextended, udiagram6
   { you can add units after this };
 
 {$R *.res}
@@ -24,6 +24,8 @@ begin
   Application.CreateForm(TDiagram3, Diagram3);
   Application.CreateForm(TDiagram4, Diagram4);
   Application.CreateForm(TDiagram5, Diagram5);
+  Application.CreateForm(TExtendedMeasures, ExtendedMeasures);
+  Application.CreateForm(TDiagram6, Diagram6);
   Application.Run;
 end.
 

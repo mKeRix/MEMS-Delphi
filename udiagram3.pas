@@ -82,7 +82,7 @@ begin
   else
   begin
     diagramView.Drawer.RangeMaxX := currentx;
-    diagramView.Drawer.RangeMinX := currentx - range;;
+    diagramView.Drawer.RangeMinX := currentx - range;
   end;
 end;
 

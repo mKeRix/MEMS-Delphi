@@ -1,0 +1,21 @@
+object Diagram6: TDiagram6
+  Left = 586
+  Height = 440
+  Top = 124
+  Width = 680
+  Caption = 'Erweiterte Berschleunigung'
+  ClientHeight = 440
+  ClientWidth = 680
+  OnCreate = FormCreate
+  LCLVersion = '1.0.2.0'
+  object pDiagram: TPanel
+    Left = 10
+    Height = 420
+    Top = 10
+    Width = 660
+    Align = alClient
+    BorderSpacing.Around = 10
+    BevelOuter = bvNone
+    TabOrder = 0
+  end
+end
